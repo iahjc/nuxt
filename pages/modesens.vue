@@ -1,41 +1,99 @@
 <template>
   <section class="container">
-    <h1>
-      ModeSens
-    </h1>
+    <header>
+      <ul>
+        <li>服装</li>
+        <li>箱包</li>
+        <li>鞋履</li>
+        <li>配饰</li>
+        <li>美妆</li>
+        <li>modesens vue</li>
+        <li><router-link to="/dashboard">dashboard</router-link></li>
+      </ul>
+
+      <div class="user">
+        <span>登录</span>&nbsp;|&nbsp;<span>注册</span>
+      </div>
+    </header>
+
+    <ul class="getApi">
+      <li @click="getNavJson">获得导航数据 (get)</li>
+      <li v-show="m_a.length > 0">
+        {{m_a}}
+      </li>
+    </ul>
+
+    <div class="modesens">
+      modesens vue
+    </div>
   </section>
 </template>
 
 <script>
+import axios from 'axios'
+export default {
+  data() {
+    return {
+      navJson: null,
+      m_a: []
+    }
+  },
+  methods: {
+    getNavJson() {
+      this.getNavHeaderJson().then((res) => {
+        console.log(res.navHeadJson)
+        this.navJson = res.navHeadJson
+        this.m_a = this.navJson.m_a
+        console.log(this.m_a)
+      })
+    },
+    getNavHeaderJson() {
+      let url = `https://modesens.com/getnavhead/?csrfmiddlewaretoken=i5cwyQxw5c8qgkJ6JvvOQ2Qgjp1EZeokrmztDeiHZxdJxZqNMlFXCFnOsD2cM1Xd&fromweb=1`
+      return axios.get(url, {}).then((res) => {
+        return Promise.resolve(res.data)
+      })
+    }
+  }
+}
 </script>
 
 <style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.getApi {
+  width: 1200px;
+  margin: 30px auto;
+  font-size: 12px;
+  cursor: pointer;
+}
+.modesens {
+  width: 100%;
   text-align: center;
+  margin-top: 150px;
 }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.container header {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.container header .user {
+  font-size: 12px;
+  line-height: 45px;
 }
 
-.links {
-  padding-top: 15px;
+.container header ul {
+  display: flex;
+  height: 45px;
+
+}
+
+.container header ul li {
+  list-style: none;
+  height: 45px;
+  line-height: 45px;
+  width: 120px;
+  text-align: center;
+  font-size: 12px;
 }
 </style>
