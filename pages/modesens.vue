@@ -9,6 +9,8 @@
       <li v-show="m_a.length > 0">
         {{m_a}}
       </li>
+      <li>iframe</li>
+      <Frame/>
     </ul>
 
     <div class="modesens">
@@ -19,10 +21,12 @@
 
 <script>
 import Head from '~/components/Head.vue'
+import Frame from '~/components/frame.vue'
 import axios from 'axios'
 export default {
   components: {
-    Head
+    Head,
+    Frame
   },
   data() {
     return {
