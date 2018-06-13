@@ -1,21 +1,6 @@
 <template>
   <section class="container">
-    <header>
-      <ul>
-        <li>服装</li>
-        <li>箱包</li>
-        <li>鞋履</li>
-        <li>配饰</li>
-        <li>美妆</li>
-        <li><router-link to="/modesens">modesens vue</router-link></li>
-        <li>dashboard</li>
-      </ul>
-
-      <div class="user">
-        <span>登录</span>&nbsp;|&nbsp;<span>注册</span>
-      </div>
-    </header>
-
+    <Head/>
     <div class="dashboard">
       dashboard
     </div>
@@ -23,13 +8,11 @@
 </template>
 
 <script>
+import Head from '~/components/Head.vue'
+
 export default {
-  data() {
-    return {
-      showFlag: false
-    }
-  },
-  methods: {
+  components: {
+    Head
   }
 }
 </script>

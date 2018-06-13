@@ -1,20 +1,8 @@
 <template>
   <section class="container">
-    <header>
-      <ul>
-        <li>服装</li>
-        <li>箱包</li>
-        <li>鞋履</li>
-        <li>配饰</li>
-        <li>美妆</li>
-        <li>modesens vue</li>
-        <li><router-link to="/dashboard">dashboard</router-link></li>
-      </ul>
+    <Head>
 
-      <div class="user">
-        <span>登录</span>&nbsp;|&nbsp;<span>注册</span>
-      </div>
-    </header>
+    </Head>
 
     <ul class="getApi">
       <li @click="getNavJson">获得导航数据 (get)</li>
@@ -30,8 +18,12 @@
 </template>
 
 <script>
+import Head from '~/components/Head.vue'
 import axios from 'axios'
 export default {
+  components: {
+    Head
+  },
   data() {
     return {
       navJson: null,
