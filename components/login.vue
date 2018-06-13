@@ -3,7 +3,7 @@
     <div class="close" @click="hide">
       关闭
     </div>
-    <iframe class="contentWrap" src='/accounts/login/?next=/dashboard'></iframe>
+    <iframe class="contentWrap" src='/accounts/login/?next='></iframe>
   </section>
 </template>
 
