@@ -1,6 +1,6 @@
 <template>
   <section class="frame">
-    <iframe id="frame" src='/frame/'></iframe>
+    <iframe id="frame" @click="getFrameEvent" src='/frame/'></iframe>
     <div ref="getIframe" @click="getIframe">获取iframe里面的方法</div>
   </section>
 </template>
@@ -10,6 +10,9 @@
     methods: {
       getIframe() {
         console.log(document.getElementById('frame').contentWindow)
+      },
+      getFrameEvent(event) {
+        console.log(event)
       }
     }
   }
