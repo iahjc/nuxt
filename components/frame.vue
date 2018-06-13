@@ -1,5 +1,5 @@
 <template>
-  <section class="frame">
+  <section class="frame" v-show="showFlag">
     <iframe id="frame" @click="getFrameEvent" src='/frame/'></iframe>
     <div ref="getIframe" @click="getIframe">获取iframe里面的方法</div>
   </section>
@@ -7,12 +7,23 @@
 
 <script>
   export default {
+    data() {
+      return {
+        showFlag: false
+      }
+    },
     methods: {
       getIframe() {
         console.log(document.getElementById('frame').contentWindow)
       },
       getFrameEvent(event) {
         console.log(event)
+      },
+      show() {
+        this.showFlag = true
+      },
+      hide() {
+        this.showFlag = false
       }
     }
   }

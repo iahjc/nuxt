@@ -11,8 +11,8 @@
       </li>
 
     </ul>
-    <div>iframe</div>
-    <Frame/>
+    <div @click="showIframe">iframe</div>
+    <Frame ref="frame"></Frame>
     <div class="modesens">
       modesens vue
     </div>
@@ -35,6 +35,9 @@ export default {
     }
   },
   methods: {
+    showIframe() {
+      this.$refs.frame.show()
+    },
     getNavJson() {
       this.getNavHeaderJson().then((res) => {
         console.log(res.navHeadJson)
