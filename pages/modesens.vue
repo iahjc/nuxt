@@ -9,10 +9,10 @@
       <li v-show="m_a.length > 0">
         {{m_a}}
       </li>
-      <li>iframe</li>
-      <Frame/>
-    </ul>
 
+    </ul>
+    <div>iframe</div>
+    <Frame/>
     <div class="modesens">
       modesens vue
     </div>
